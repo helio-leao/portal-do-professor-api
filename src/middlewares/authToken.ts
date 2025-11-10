@@ -1,6 +1,6 @@
-import { NextFunction, Request, Response } from "express";
+import type { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
-import TokenPayload from "../types/TokenPayload";
+import type TokenPayload from "../types/TokenPayload.ts";
 
 const ACCESS_TOKEN_SECRET = process.env.ACCESS_TOKEN_SECRET;
 
