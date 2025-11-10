@@ -1,6 +1,7 @@
 import { Router } from "express";
 import type Aluno from "../types/Aluno";
 import generateId from "../utils/IDGeneratorTEMPORARY.ts";
+import authToken from "../middlewares/authToken.ts";
 
 const router = Router();
 
@@ -22,7 +23,7 @@ let alunos: Aluno[] = [
   },
 ];
 
-router.post("/", (req, res) => {
+router.post("/", authToken, (req, res) => {
   const { nome, email, turma, status } = req.body;
 
   const aluno: Aluno = {
@@ -37,11 +38,11 @@ router.post("/", (req, res) => {
   res.json(aluno);
 });
 
-router.get("/", (req, res) => {
+router.get("/", authToken, (req, res) => {
   res.json(alunos);
 });
 
-router.delete("/", (req, res) => {
+router.delete("/", authToken, (req, res) => {
   const { id } = req.body;
 
   try {
