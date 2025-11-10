@@ -47,7 +47,7 @@ router.delete("/:id", authToken, (req, res) => {
 
   try {
     alunos = alunos.filter((a) => a._id !== id);
-    res.status(204);
+    res.sendStatus(204);
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Internal Server Error" });
