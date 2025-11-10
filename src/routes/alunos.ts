@@ -42,8 +42,8 @@ router.get("/", authToken, (req, res) => {
   res.json(alunos);
 });
 
-router.delete("/", authToken, (req, res) => {
-  const { id } = req.body;
+router.delete("/:id", authToken, (req, res) => {
+  const { id } = req.params;
 
   try {
     alunos = alunos.filter((a) => a._id !== id);
