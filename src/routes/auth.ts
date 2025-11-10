@@ -1,14 +1,20 @@
 import { Router } from "express";
 import jwt from "jsonwebtoken";
 import type TokenPayload from "../types/TokenPayload";
+import type User from "../types/User";
 
 const { ACCESS_TOKEN_SECRET, REFRESH_TOKEN_SECRET } = process.env;
 
 const router = Router();
 
 // TODO: remove mock data after connecting to database
-type User = { _id: string; username: string; password: string };
-const users: User[] = [{ _id: "1", username: "test", password: "123321" }];
+const users: User[] = [
+  {
+    _id: "12fbe4e1-1308-4965-8729-2ae2f16ee524",
+    username: "test",
+    password: "123321",
+  },
+];
 let tokens: string[] = [];
 
 router.post("/login", (req, res) => {
