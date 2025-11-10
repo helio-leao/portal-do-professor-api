@@ -3,5 +3,5 @@ export default interface Aluno {
   nome: string;
   email: string;
   turma: string;
-  status: string;
+  status: "ATIVO" | "INATIVO";
 }

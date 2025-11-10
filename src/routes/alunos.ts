@@ -5,7 +5,22 @@ import generateId from "../utils/IDGeneratorTEMPORARY.ts";
 const router = Router();
 
 //TODO: remove after connecting to database
-let alunos: Aluno[] = [];
+let alunos: Aluno[] = [
+  {
+    _id: "de31838e-f817-44fb-a28a-95c9600575ab",
+    email: "hmtleao@hotmail.com",
+    nome: "Hélio",
+    status: "ATIVO",
+    turma: "",
+  },
+  {
+    _id: "f1150311-0f7b-406e-a8ca-8c7466b03ac1",
+    email: "amleao@gmail.com",
+    nome: "Ana",
+    status: "INATIVO",
+    turma: "",
+  },
+];
 
 router.post("/", (req, res) => {
   const { nome, email, turma, status } = req.body;
