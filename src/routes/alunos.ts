@@ -4,7 +4,7 @@ import generateId from "../utils/IDGeneratorTEMPORARY.ts";
 
 const router = Router();
 
-// TODO: remove mock data after connecting to database
+//TODO: remove after connecting to database
 let alunos: Aluno[] = [];
 
 router.post("/", (req, res) => {

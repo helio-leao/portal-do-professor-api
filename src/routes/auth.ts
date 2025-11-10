@@ -1,27 +1,20 @@
 import { Router } from "express";
 import jwt from "jsonwebtoken";
 import type TokenPayload from "../types/TokenPayload";
-import type User from "../types/User";
+import Users from "../mocks/Users.ts";
 
 const { ACCESS_TOKEN_SECRET, REFRESH_TOKEN_SECRET } = process.env;
 
 const router = Router();
 
-// TODO: remove mock data after connecting to database
-const users: User[] = [
-  {
-    _id: "12fbe4e1-1308-4965-8729-2ae2f16ee524",
-    username: "test",
-    password: "123321",
-  },
-];
+//TODO: remove after connecting to database
 let tokens: string[] = [];
 
 router.post("/login", (req, res) => {
   const { username, password } = req.body;
 
   try {
-    const user = users.find((u) => u.username === username);
+    const user = Users.find((u) => u.username === username);
 
     if (user == null || user.password !== password) {
       res.status(401).json({ error: "Wrong username or password" });
