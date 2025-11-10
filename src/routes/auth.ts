@@ -9,7 +9,7 @@ const router = Router();
 // TODO: remove mock data after connecting to database
 type User = { _id: string; username: string; password: string };
 const users: User[] = [{ _id: "1", username: "test", password: "123321" }];
-const tokens = ["1"];
+let tokens: string[] = [];
 
 router.post("/login", (req, res) => {
   const { username, password } = req.body;
@@ -33,6 +33,8 @@ router.post("/login", (req, res) => {
     });
     const refreshToken = jwt.sign(payload, REFRESH_TOKEN_SECRET!);
 
+    tokens.push(refreshToken);
+
     const userWithoutPassword = { _id: user._id, username: user.username };
     res.json({ user: userWithoutPassword, accessToken, refreshToken });
   } catch (error) {
@@ -52,7 +54,8 @@ router.delete("/logout", (req, res) => {
       return;
     }
 
-    tokens.filter((t) => token !== t);
+    tokens = tokens.filter((t) => token !== t);
+
     res.status(204).json({ message: "Logged out successfully" });
   } catch (error) {
     console.error(error);

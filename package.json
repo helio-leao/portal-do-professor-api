@@ -7,7 +7,7 @@
   "type": "module",
   "main": "src/server.ts",
   "scripts": {
-    "dev": "node src/server.ts"
+    "dev": "node --watch --env-file=.env src/server.ts"
   },
   "dependencies": {
     "bcrypt": "^6.0.0",
