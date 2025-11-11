@@ -42,6 +42,13 @@ router.get("/", authToken, (req, res) => {
   res.json(alunos);
 });
 
+router.get("/:id", authToken, (req, res) => {
+  const { id } = req.params;
+
+  const aluno = alunos.find((a) => a._id === id);
+  res.json(aluno);
+});
+
 router.delete("/:id", authToken, (req, res) => {
   const { id } = req.params;
 
