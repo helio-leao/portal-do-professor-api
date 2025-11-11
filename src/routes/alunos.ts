@@ -38,6 +38,24 @@ router.post("/", authToken, (req, res) => {
   res.json(aluno);
 });
 
+router.patch("/:id", authToken, (req, res) => {
+  const { id } = req.params;
+  const { nome, email, turma, status } = req.body;
+
+  const aluno: Aluno = {
+    _id: id,
+    nome,
+    email,
+    turma,
+    status,
+  };
+
+  alunos = alunos.filter((a) => a._id != id);
+  alunos.push(aluno);
+
+  res.json(aluno);
+});
+
 router.get("/", authToken, (req, res) => {
   res.json(alunos);
 });
